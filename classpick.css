@@ -1,0 +1,86 @@
+.container{
+  background: #292f36;
+  height:300px;
+  display:flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  background:#292f36;
+}
+
+.classPanel{
+  width:25%;
+  margin:10px;
+  text-align: center;
+  color:white;
+}
+
+.classFrame{
+  width:100%;
+  height:50px;
+  color: white;
+  background: #ff6b6b;
+  margin: 2px;
+  cursor:pointer;
+  border: solid 5px #ff6b6b;
+  text-align: center;
+}
+
+.classFrameTaken{
+  width:100%;
+  height:50px;
+  color: white;
+  background: #ba3434;
+  margin: 2px;
+  border: solid 5px #ba3434;
+  border-top: solid 5px #754949;
+  border-right: solid 5px #754949;
+  text-align: center;
+  cursor: pointer;
+}
+
+.submitbutton{
+  width:6%;
+  height:20px;
+  color:white;
+  background: #ffe66d;
+  margin-left: 47%;
+  cursor:pointer;
+}
+
+.body{
+  background: #292f36;
+}
+
+
+.node{
+  width: 100px;
+  height: 50px;
+  background: #ff6b6b;
+  text-align: center;
+  padding-top: 10px;
+  margin: 20px;
+  font-size: 10;
+  color:white;
+  word-wrap: break-word;
+  cursor: pointer;
+  margin-bottom: 0px;
+  margin-top:20px;
+}
+
+.treeHolder{
+  background:#292f36;
+  width:70%;
+  height:500;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  flex-grow:.7;
+}
+
+.level{
+  padding:0px;
+  margin-left:150px;
+  margin-top:20px;
+  margin-right:100px;
+}
