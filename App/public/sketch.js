@@ -147,23 +147,23 @@ function renderFrames(classlist){
 
     classButton.addEventListener('mouseover', function(event){
       if(!item.taken){
-        classButton.style.background = shadeColor("#ff6b6b", 35);
-        classButton.style.border = 'solid 5px' + shadeColor('#ff6b6b',35);
+        classButton.style.background = shadeColor("#1abc9c", 35);
+        classButton.style.border = 'solid 5px' + shadeColor('#1abc9c',35);
       }
       else{
-        classButton.style.background = shadeColor("#ba3434", 35);
-        classButton.style.border = 'solid 5px' + shadeColor('#ba3434',35);
+        classButton.style.background = shadeColor("#11876f", 35);
+        classButton.style.border = 'solid 5px' + shadeColor('#11876f',35);
       }
     });
 
     classButton.addEventListener('mouseout', function(event){
       if(!item.taken){
-        classButton.style.background = '#ff6b6b';
-        classButton.style.border = 'solid 5px #ff6b6b';
+        classButton.style.background = '#1abc9c';
+        classButton.style.border = 'solid 5px #1abc9c';
       }
       else{
-        classButton.style.background = '#ba3434';
-        classButton.style.border = 'solid 5px #ba3434';
+        classButton.style.background = '#11876f';
+        classButton.style.border = 'solid 5px #11876f';
       }
     });
 
