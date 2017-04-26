@@ -1,0 +1,221 @@
+.container{
+  order:1;
+  height:100px;
+  display:flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.sidebar{
+  order:2;
+  display:none;
+  width:15%;
+  height: 500px;
+}
+.classPanel{
+  display: flex;
+  width:50%;
+  margin-left:20%;
+  text-align: center;
+  color:white;
+  height:250px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top:0;
+}
+
+.classFrame{
+  width:25%;
+  height:50px;
+  color: white;
+  background: #ff6b6b;
+  margin: 5px;
+  cursor:pointer;
+  border: solid 5px #ff6b6b;
+  text-align: center;
+}
+
+.classFrameTaken{
+  width:25%;
+  height:50px;
+  color: white;
+  background: #ba3434;
+  margin: 5px;
+  border: solid 5px #ba3434;
+  border-top: solid 5px #ba3434;
+  border-right: solid 5px #ba3434;
+  text-align: center;
+  cursor: pointer;
+}
+
+.submitbutton{
+  width:34.6%;
+  margin-right: 20px;
+  margin-top:20px;
+  height:20px;
+  color:black;
+  background: #1abc9c;
+  margin-left: 0;
+  cursor:pointer;
+  text-align: center;
+  border-radius:3px;
+  height:40px;
+  vertical-align: middle;
+  line-height: 40px;
+  color:white;
+  font-size: 20px;
+}
+
+.otherbutton{
+  width:20%;
+  margin-right: 20px;
+  margin-top:20px;
+  height:20px;
+  color:black;
+  background: #1abc9c;
+  margin-left: 0;
+  cursor:pointer;
+  text-align: center;
+  border-radius:3px;
+  height:40px;
+  vertical-align: middle;
+  line-height: 40px;
+  color:white;
+}
+
+.body{
+  background: #292f36;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(120deg, #60437c 0%, #0e456c 100%);
+  min-width: 100%;
+  min-height: 100%;
+  padding:0;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+
+html, body {
+  margin: 0;
+  height:100%;
+}
+
+
+.node{
+  width: 120px;
+  height: 60px;
+  background: #ff6b6b;
+  text-align: center;
+  padding-top: 10px;
+  margin: 0px;
+  font-size: 10;
+  color:white;
+  word-wrap: break-word;
+  cursor: pointer;
+  margin-bottom: 0px;
+  margin-top:10px;
+}
+
+.treeHolder{
+  width:70%;
+  height:400px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  flex-grow:.7;
+}
+
+.level{
+  padding:0px;
+  margin-left:150px;
+  margin-top:20px;
+  margin-right:100px;
+}
+
+.header{
+  font-size: 50px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+  color:white;
+  left:0;
+  top:0;
+  margin-left: 0;
+  maring-top:0;
+}
+
+.menu{
+  width:100%;
+  padding-left: 40%;
+  margin-top:60px;
+}
+
+.buttonMenu{
+  height:70px;
+  padding-left: 36%;
+}
+
+
+.custom-dropdown {
+  font-size: 1.2em;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 10px; /* demo only */
+}
+
+.custom-dropdown select {
+  background-color: #1abc9c;
+  color: #fff;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+.custom-dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+.custom-dropdown::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+.custom-dropdown::after {
+  color: rgba(0,0,0,.4);
+}
