@@ -7,26 +7,22 @@
   flex-wrap: wrap;
 }
 
-.sidebar{
-  order:2;
-  display:none;
-  width:15%;
-  height: 500px;
-}
 .classPanel{
   display: flex;
-  width:50%;
-  margin-left:20%;
+  width:100%;
   text-align: center;
   color:white;
   height:250px;
   flex-direction: column;
   flex-wrap: wrap;
   margin-top:0;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .classFrame{
-  width:25%;
+  width:15%;
   height:50px;
   color: white;
   background: #1abc9c;
@@ -37,7 +33,7 @@
 }
 
 .classFrameTaken{
-  width:25%;
+  width:15%;
   height:50px;
   color: white;
   background: #11876f;
@@ -103,13 +99,13 @@ html, body {
 
 
 .node{
-  width: 150px;
-  height: 60px;
+  width: 50%;
+  height: 50px;
   background: #ff6b6b;
   text-align: center;
+  padding-top:15px;
   padding-left:5px;
   padding-right:5px;
-  padding-top: 10px;
   margin: 0px;
   font-size: 10;
   color:#4b5059;
@@ -119,8 +115,23 @@ html, body {
   margin-top:10px;
 }
 
+.electiveNode{
+  width:auto;
+  max-width:25%;
+  min-width: 15%;
+  height:20px;
+  text-align: center;
+  font-size: 15px;
+  color:#3c4047;
+  word-wrap: break-word;
+  cursor:pointer;
+  margin: 3px;
+  padding:2px;
+  border-radius: 2px;
+}
+
 .treeHolder{
-  width:70%;
+  width:100%;
   height:400px;
   display: flex;
   flex-direction: row-reverse;
@@ -129,10 +140,14 @@ html, body {
 }
 
 .level{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   padding:0px;
-  margin-left:150px;
+  width:25%;
+  margin-left:50px;
   margin-top:20px;
-  margin-right:100px;
+  margin-right:50px;
 }
 
 .header{
@@ -144,7 +159,25 @@ html, body {
   left:0;
   top:0;
   margin-left: 0;
-  maring-top:0;
+  margin-top:0;
+}
+
+.electivesHolder{
+  font-size: 20px;
+  width: 100%;
+  max-height: 150px;
+  background: #1abc9c;
+  text-align: center;
+  color:white;
+  left:0;
+  top:0;
+  margin-left: 0;
+  margin-top:0;
+  display:flex;
+  flex-direction: row;
+  padding:10px;
+  flex-wrap: wrap;
+  flex-grow: -1;
 }
 
 .menu{
@@ -165,6 +198,7 @@ html, body {
   display: inline-block;
   vertical-align: middle;
   margin-top: 10px; /* demo only */
+  cursor: pointer;
 }
 
 .custom-dropdown select {
@@ -178,6 +212,7 @@ html, body {
   border-radius: 3px;
   text-indent: 0.01px;
   text-overflow: '';
+  cursor: pointer;
   -webkit-appearance: button; /* hide default arrow in chrome OSX */
 }
 
@@ -186,6 +221,7 @@ html, body {
   content: "";
   position: absolute;
   pointer-events: none;
+  cursor: pointer;
 }
 
 .custom-dropdown::after { /*  Custom dropdown arrow */
@@ -196,6 +232,7 @@ html, body {
   right: 1.2em;
   top: 50%;
   margin-top: -.5em;
+  cursor: pointer;
 }
 
 .custom-dropdown::before { /*  Custom dropdown arrow cover */
@@ -204,6 +241,7 @@ html, body {
   top: 0;
   bottom: 0;
   border-radius: 0 3px 3px 0;
+  cursor: pointer;
 }
 
 .custom-dropdown select[disabled] {

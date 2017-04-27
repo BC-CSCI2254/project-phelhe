@@ -26,7 +26,7 @@ var io = require('socket.io')(server);
 //list of colors
 let colors =["Aqua","Aquamarine","Blue","BlueViolet","Chartreuse","CornflowerBlue","Crimson","Cyan","DeepPink","DeepSkyBlue","DodgerBlue","FireBrick","ForestGreen","Fuchsia","Gold","GoldenRod","Green","GreenYellow","HotPink","Indigo","Khaki","LawnGreen","LightBlue","LightCoral","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","Lime","LimeGreen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","Navy","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGreen","PaleTurquoise","PaleVioletRed","Pink","Plum","PowderBlue","Purple","Red","RoyalBlue","Salmon","SeaGreen","SkyBlue","SlateBlue","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Yellow","YellowGreen"];
 
-let colors2 = ["#7AD334", "#88aaff", "#F0A000", "#DAD320", "#dd9999", "#11ddbb", "#ffaa88", "#ddaacc", "#62f79b", "#304bff"];
+let colors2 = ["#7AD334", "#88aaff", "#F0A000", "#DAD320", "#dd9999", "#ffaa88", "#ddaacc", "#62f79b", "#304bff"];
 
 //list of majors
 let majors = ["Computer Science B.A.", "Computer Science B.S.", "Economics"];
@@ -130,6 +130,8 @@ function econCore(){
   this.ECON2202 = new classNode("Macroeconomic Theory", "ECON2202", [this.ECON1131, this.MATH1100], 2000);
   this.ECON2228 = new classNode("Econometrics", "ECON2228", [this.ECON1151, this.MATH1100], 2000);
   this.core = new classNode("Core", "ECON complete", [this.ECON2201, this.ECON2202, this.ECON2228], 3000);
+  //electives
+  this.electives = new classNode("Electives", "Econ Electives", []);
 }
 
 function csciBA(){ //just has CSCI elective requirements
@@ -143,6 +145,25 @@ function csciBA(){ //just has CSCI elective requirements
   this.MATH1101 = new classNode("Calculus II", "MATH1101", [this.MATH1100], 2000);
   this.CSCI3383 = new classNode("Algorithms", "CSCI3383", [this.CSCI2243, this.CSCI2244], 3000);
   this.core = new classNode("Core", "CSCIBA complete", [this.CSCI3383, this.MATH1101, this.CSCI2272, this.CSCI2271], 4000);
+  //electives
+  this.CSCI3333 = new classNode("Computer Graphics", "CSCI3333", [this.CSCI1102]);
+  this.CSCI3335 = new classNode("Principles of Multimedia Systems", "CSCI3335", []);
+  this.CSCI3341 = new classNode("Artificial Intelligence", "CSCI3341", [this.CSCI1102, this.CSCI2244]);
+  this.CSCI3343 = new classNode("Computer Vision", "CSCI3343", [this.CSCI1102, this.CSCI2244]);
+  this.CSCI3344 = new classNode("Mobile Application Development", "CSCI3344", [this.CSCI1102]);
+  this.CSCI3345 = new classNode("Machine Learning", "CSCI3345", [this.CSCI1101, this.CSCI2244]);
+  this.CSCI3346 = new classNode("Data Mining", "CSCI3346", [this.CSCI1102, this.CSCI2244]);
+  this.CSCI3347 = new classNode("Robotics", "CSCI3347", [this.CSCI1101]);
+  this.CSCI3353 = new classNode("Object Oriented Design", "CSCI3353", [this.CSCI1102]);
+  this.CSCI3356 = new classNode("Software Engineering", "CSCI3356", [this.CSCI3353]);
+  this.CSCI3357 = new classNode("Database System Implementation", "CSCI3357", [this.CSCI1101]);
+  this.CSCI3359 = new classNode("Distributed Systems", "CSCI3359", [this.CSCI1102]);
+  this.CSCI3362 = new classNode("Operating Systems", "CSCI3362", [this.CSCI2271]);
+  this.CSCI3363 = new classNode("Computer Networks", "CSCI3363", [this.CSCI2271]);
+  this.CSCI3366 = new classNode("Principles of Programming Languages", "CSCI3366", [this.CSCI2271]);
+  this.CSCI3367 = new classNode("Compilers", "CSCI3367", [this.CSCI2271]);
+  this.CSCI3381 = new classNode("Cryptography", "CSCI3381", [this.CSCI2243]);
+  this.electives = new classNode("Electives", "CSCI Electives", [this.CSCI3341,this.CSCI3333, this.CSCI3335, this.CSCI3343, this.CSCI3344, this.CSCI3345, this.CSCI3346, this.CSCI3347, this.CSCI3353, this.CSCI3356, this.CSCI3357, this.CSCI3359, this.CSCI3362, this.CSCI3363, this.CSCI3366, this.CSCI3367, this.CSCI3381]);
 }
 
 function csciBS(){ //has math33xx elective requirement as well as CSCI elective requirements and thesis? can do 3397 thesis research in place of 33xx level elective
@@ -160,4 +181,23 @@ function csciBS(){ //has math33xx elective requirement as well as CSCI elective 
   this.CSCI3383 = new classNode("Algorithms", "CSCI3383", [this.CSCI2243, this.CSCI2244], 3000);
   this.CSCI3372 = new classNode("Computer Architecture", "CSCI3372", [this.CSCI2272], 3000);
   this.core = new classNode("Core", "CSCIBA complete", [this.CSCI3383, this.MATH2202, this.MATH2210, this.CSCI3372, this.CSCI2272, this.CSCI2271], 4000);
+  //electives
+  this.CSCI3333 = new classNode("Computer Graphics", "CSCI3333", [this.CSCI1102]);
+  this.CSCI3335 = new classNode("Principles of Multimedia Systems", "CSCI3335", []);
+  this.CSCI3341 = new classNode("Artificial Intelligence", "CSCI3341", [this.CSCI1102, this.CSCI2244]);
+  this.CSCI3343 = new classNode("Computer Vision", "CSCI3343", [this.CSCI1102, this.CSCI2244]);
+  this.CSCI3344 = new classNode("Mobile Application Development", "CSCI3344", [this.CSCI1102]);
+  this.CSCI3345 = new classNode("Machine Learning", "CSCI3345", [this.CSCI1101, this.CSCI2244]);
+  this.CSCI3346 = new classNode("Data Mining", "CSCI3346", [this.CSCI1102, this.CSCI2244]);
+  this.CSCI3347 = new classNode("Robotics", "CSCI3347", [this.CSCI1101]);
+  this.CSCI3353 = new classNode("Object Oriented Design", "CSCI3353", [this.CSCI1102]);
+  this.CSCI3356 = new classNode("Software Engineering", "CSCI3356", [this.CSCI3353]);
+  this.CSCI3357 = new classNode("Database System Implementation", "CSCI3357", [this.CSCI1101]);
+  this.CSCI3359 = new classNode("Distributed Systems", "CSCI3359", [this.CSCI1102]);
+  this.CSCI3362 = new classNode("Operating Systems", "CSCI3362", [this.CSCI2271]);
+  this.CSCI3363 = new classNode("Computer Networks", "CSCI3363", [this.CSCI2271]);
+  this.CSCI3366 = new classNode("Principles of Programming Languages", "CSCI3366", [this.CSCI2271]);
+  this.CSCI3367 = new classNode("Compilers", "CSCI3367", [this.CSCI2271]);
+  this.CSCI3381 = new classNode("Cryptography", "CSCI3381", [this.CSCI2243]);
+  this.electives = new classNode("Electives", "CSCI Electives", [this.CSCI3341,this.CSCI3333, this.CSCI3335, this.CSCI3343, this.CSCI3344, this.CSCI3345, this.CSCI3346, this.CSCI3347, this.CSCI3353, this.CSCI3356, this.CSCI3357, this.CSCI3359, this.CSCI3362, this.CSCI3363, this.CSCI3366, this.CSCI3367, this.CSCI3381]);
 }

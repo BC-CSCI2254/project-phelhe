@@ -10,6 +10,8 @@ let finalClassesList = [];
 
 //holds a list of divs so that the connectClasses function can use their offsets to connect them
 let divs = [];
+//holds the elective divs
+let elecDivs = [];
 
 // Start a socket connection to the server
 //change this when we host it somewhere else?
@@ -33,6 +35,7 @@ socket.on('receivedClasses',
     globalMajorRecord.name = majorRecord.name;
     globalMajorRecord.classes = majorRecord.classes;
     globalMajorRecord.tree = majorRecord.tree.core;
+    globalMajorRecord.electives = majorRecord.tree.electives;
     view('classPick', globalMajorRecord.classes);
   }
 );
@@ -65,10 +68,19 @@ function view(page, data){
       backButton.addEventListener('click', function(event){
         view('classPick', globalMajorRecord.classes);
       });
+      backButton.addEventListener('mouseover', function(event){
+        backButton.style.background = shadeColor("#1abc9c", 35);
+      });
+      backButton.addEventListener('mouseout', function(event){
+        backButton.style.background = '#1abc9c';
+      });
       let menu = document.createElement('div');
       container.appendChild(backButton);
       generateTree(globalMajorRecord.tree);
-      generateOffsets();
+      generateElectives(globalMajorRecord.electives);
+      generateOffsets(divs);
+      generateOffsets(elecDivs);
+      console.log(elecDivs);
       connectClasses(globalMajorRecord.tree);
       unvisit(globalMajorRecord.tree); //have to use the tree field ... not used???
       break;
@@ -100,6 +112,13 @@ function renderMajorPick(majors){
   submit.addEventListener('click', function(event){
     sendMajor(select.value);
   });
+  submit.addEventListener('mouseover', function(event){
+    submit.style.background = shadeColor("#1abc9c", 35);
+  });
+
+  submit.addEventListener('mouseout', function(event){
+    submit.style.background = '#1abc9c';
+  });
   menu.appendChild(span);
   menu.appendChild(submit);
   container.appendChild(menu);
@@ -124,12 +143,27 @@ function renderFrames(classlist){
     view('viewTree', globalMajorRecord);
   });
 
+  submit.addEventListener('mouseover', function(event){
+    submit.style.background = shadeColor("#1abc9c", 35);
+  });
+
+  submit.addEventListener('mouseout', function(event){
+    submit.style.background = '#1abc9c';
+  });
+
   //back -- sends the user back to the major select page
   let backButton = document.createElement('div');
   backButton.classList.add("otherbutton");
   backButton.innerHTML = 'Back';
   backButton.addEventListener('click', function(event){
     view('chooseMajors', majorsArray);
+  });
+  backButton.addEventListener('mouseover', function(event){
+    backButton.style.background = shadeColor("#1abc9c", 35);
+  });
+
+  backButton.addEventListener('mouseout', function(event){
+    backButton.style.background = '#1abc9c';
   });
 
   //classpanel -- creates a panel to hold all of the classes
@@ -275,6 +309,7 @@ function shadeColor(color, percent) {
 
 //function to generate the divs for the tree -- takes globalMajorRecord.tree
 function generateTree(tree){
+  console.log("generating tree...");
   let container = document.getElementById('container');
   let treeHolder = document.createElement('div');
   let level1 = document.createElement('div');
@@ -302,7 +337,7 @@ function generateTree(tree){
       });
 
       item.addEventListener("mouseover", function(event){
-        item.style.background = shadeColor(node.color, 70);
+        item.style.background = shadeColor(node.color, 50);
         //item.style.border = "solid 4px " + shadeColor(node.color, -100);
       });
 
@@ -314,13 +349,13 @@ function generateTree(tree){
 
       //item.style.background = node.color;
       item.style.background = node.color;
-      item.style.color = 'black';
+      item.style.color = '#3c4047';
       //item.style.border = 'solid 4px ' + node.color;
       if(node.level == 1000){level1.appendChild(item);}
       else if(node.level == 2000){level2.appendChild(item);}
       else{level3.appendChild(item);}
       //container.appendChild(item);
-      divs.push({name: node.name, div:item});
+      divs.push({name: node.name, div:item, color:node.color});
     }
   }
   var q = [];
@@ -348,6 +383,60 @@ function generateTree(tree){
   //console.log(tree);
 }
 
+function generateElectives(electives){ //dont draw lines, just light up its prereqs while darkening everything else
+  console.log("adding electives...");
+  let electivesHolder = document.createElement('div');
+  electivesHolder.classList.add('electivesHolder');
+  //electivesHolder.innerHTML = "ELECTIVES GO HERE";
+  container.appendChild(electivesHolder);
+  electives.prereqs.forEach(function(elective){
+    let node = document.createElement('div');
+    node.classList.add('electiveNode');
+    node.innerHTML = elective.name;
+    node.style.background = elective.color;
+    node.addEventListener("mouseover", function(event){
+      console.log(divs);
+      node.style.background = shadeColor(elective.color, 50);
+      elective.prereqs.forEach(function(prereq){
+        for(var i = 0; i<divs.length; i++){
+          if(divs[i].name == prereq.name){
+            //console.log(divs[i].name);
+            divs[i].div.style.background = shadeColor(elective.color, 50);
+          }
+          /*else{
+            console.log(divs[i].name);
+            divs[i].div.style.background = shadeColor(divs[i].color, -80);
+          }*/
+        }
+        for(var j = 0; j<elecDivs.length; j++){
+          if(elecDivs[j].name == prereq.name){
+            elecDivs[j].div.style.background = shadeColor(elective.color, 50);
+          }
+          /*else{
+            if(elecDivs[j].name!=elective.name){
+              elecDivs[j].div.style.background = shadeColor(elecDivs[j].color, -80);
+            }
+          }*/
+        }
+      });
+    });
+
+    node.addEventListener("mouseout", function(event){
+      node.style.background = elective.color;
+      elective.prereqs.forEach(function(prereq){
+        for(var i = 0; i<divs.length; i++){
+            divs[i].div.style.background = divs[i].color;
+        }
+        for(var j = 0; j<elecDivs.length; j++){
+            elecDivs[j].div.style.background = elecDivs[j].color;
+        }
+      });
+    });
+    electivesHolder.appendChild(node);
+    elecDivs.push({name: elective.name, div:node, color:elective.color});
+  });
+}
+
 //finds the position of an element
 function getOffset( el ) {
     //console.log(el);
@@ -363,7 +452,7 @@ function getOffset( el ) {
 }
 
 //stores the offsets of each div to be used for connecting the classes
-function generateOffsets(){ //adds offset fields to each div
+function generateOffsets(divs){ //adds offset fields to each div
   divs.forEach(function(item){
     item.off = getOffset(item.div);
     //console.log(item.off);
