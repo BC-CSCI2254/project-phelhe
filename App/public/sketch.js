@@ -15,7 +15,7 @@ let elecDivs = [];
 
 // Start a socket connection to the server
 //change this when we host it somewhere else?
-socket = io.connect('http://localhost:3000');
+socket = io.connect('http://cslab1.bc.edu/~phelpsh/')//io.connect('http://localhost:3000');
 //socket = io.connect('10.0.0.32:3000'); //change this to switcht the host
 
 
