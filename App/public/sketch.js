@@ -15,7 +15,7 @@ let elecDivs = [];
 
 // Start a socket connection to the server
 //change this when we host it somewhere else?
-socket = io.connect('http://cslab1.bc.edu/~phelpsh/')//io.connect('http://localhost:3000');
+socket = io.connect('http://cslab1.bc.edu/~phelpsh:8150');//io.connect('http://localhost:3000'); //http://cslab1.bc.edu/~phelpsh/
 //socket = io.connect('10.0.0.32:3000'); //change this to switcht the host
 
 
@@ -31,11 +31,16 @@ socket.on('chooseMajor',
 //recieved when the user gets the list of classes after they select their major
 socket.on('receivedClasses',
   function(majorRecord){
-    console.log("classes received! ", majorRecord); //maybe receive a record that has classlist as well as the tree... then we don't have to communicate with the server again...
+    //console.log("classes received! ", majorRecord); //maybe receive a record that has classlist as well as the tree... then we don't have to communicate with the server again...
     globalMajorRecord.name = majorRecord.name;
     globalMajorRecord.classes = majorRecord.classes;
     globalMajorRecord.tree = majorRecord.tree.core;
-    globalMajorRecord.electives = majorRecord.tree.electives;
+    globalMajorRecord.electives1000 = majorRecord.tree.electives1000;
+    //console.log(globalMajorRecord.electives1000);
+    globalMajorRecord.electives2000 = majorRecord.tree.electives2000;
+    globalMajorRecord.electives3000 = majorRecord.tree.electives3000;
+    globalMajorRecord.descriptions = majorRecord.descriptions;
+    console.log(globalMajorRecord.descriptions);
     view('classPick', globalMajorRecord.classes);
   }
 );
@@ -77,7 +82,8 @@ function view(page, data){
       let menu = document.createElement('div');
       container.appendChild(backButton);
       generateTree(globalMajorRecord.tree);
-      generateElectives(globalMajorRecord.electives);
+      console.log("HELLO");
+      generateElectives(globalMajorRecord.electives3000);
       generateOffsets(divs);
       generateOffsets(elecDivs);
       console.log(elecDivs);
@@ -333,7 +339,7 @@ function generateTree(tree){
       item.addEventListener("click", function(event){
         console.log(node.name);
         //alert("class description");
-        renderSideBar();
+        renderDescription(node);
       });
 
       item.addEventListener("mouseover", function(event){
@@ -383,19 +389,24 @@ function generateTree(tree){
   //console.log(tree);
 }
 
-function generateElectives(electives){ //dont draw lines, just light up its prereqs while darkening everything else
-  console.log("adding electives...");
-  let electivesHolder = document.createElement('div');
-  electivesHolder.classList.add('electivesHolder');
-  //electivesHolder.innerHTML = "ELECTIVES GO HERE";
-  container.appendChild(electivesHolder);
+function addElectives(electives){
+  let electivesHolder = document.getElementById('electivesHolder');
+  console.log(electivesHolder);
+  while(electivesHolder.firstChild){ //clear the container
+    electivesHolder.removeChild(electivesHolder.firstChild);
+  }
   electives.prereqs.forEach(function(elective){
     let node = document.createElement('div');
     node.classList.add('electiveNode');
     node.innerHTML = elective.name;
     node.style.background = elective.color;
+
+    node.addEventListener('click', function(event){
+      renderDescription(elective);
+    });
+
     node.addEventListener("mouseover", function(event){
-      console.log(divs);
+      //console.log(divs);
       node.style.background = shadeColor(elective.color, 50);
       elective.prereqs.forEach(function(prereq){
         for(var i = 0; i<divs.length; i++){
@@ -405,7 +416,7 @@ function generateElectives(electives){ //dont draw lines, just light up its prer
           }
           /*else{
             console.log(divs[i].name);
-            divs[i].div.style.background = shadeColor(divs[i].color, -80);
+            divs[i].div.style.background = shadeColor(divs[i].color, -30);
           }*/
         }
         for(var j = 0; j<elecDivs.length; j++){
@@ -414,7 +425,7 @@ function generateElectives(electives){ //dont draw lines, just light up its prer
           }
           /*else{
             if(elecDivs[j].name!=elective.name){
-              elecDivs[j].div.style.background = shadeColor(elecDivs[j].color, -80);
+              elecDivs[j].div.style.background = shadeColor(elecDivs[j].color, -30);
             }
           }*/
         }
@@ -435,6 +446,54 @@ function generateElectives(electives){ //dont draw lines, just light up its prer
     electivesHolder.appendChild(node);
     elecDivs.push({name: elective.name, div:node, color:elective.color});
   });
+}
+
+function generateElectives(electives){ //dont draw lines, just light up its prereqs while darkening everything else
+  console.log("adding electives...");
+  let electivesHolder = document.createElement('div');
+  electivesHolder.id = 'electivesHolder';
+  electivesHolder.classList.add('electivesHolder');
+  //electivesHolder.innerHTML = "ELECTIVES GO HERE";
+  let tab1 = document.createElement('div');
+  tab1.innerHTML = '1000 Level Electives';
+  tab1.classList.add('electiveTab');
+  let tab2 = document.createElement('div');
+  tab2.innerHTML = '2000 Level Electives';
+  tab2.classList.add('electiveTab');
+  let tab3 = document.createElement('div');
+  tab3.innerHTML = '3000 Level Electives';
+  tab3.classList.add('electiveTab');
+  tab1.style.background = '#11876f';
+  tab2.style.background = '#11876f';
+  tab3.style.backgroun = '#1abc9c';
+
+  tab1.addEventListener('click', function(event){
+    console.log("tab1");
+    tab2.style.background = '#11876f';
+    tab1.style.background = '#1abc9c';
+    tab3.style.background = '#11876f';
+    addElectives(globalMajorRecord.electives1000);
+  });
+  tab2.addEventListener('click', function(event){
+    console.log("tab2");
+    tab1.style.background = '#11876f';
+    tab2.style.background = '#1abc9c';
+    tab3.style.background = '#11876f';
+    addElectives(globalMajorRecord.electives2000);
+  });
+  tab3.addEventListener('click', function(event){
+    console.log("tab3");
+    tab1.style.background = '#11876f';
+    tab2.style.background = '#11876f'
+    tab3.style.background = '#1abc9c';
+    addElectives(globalMajorRecord.electives3000);
+  });
+
+  container.appendChild(tab1);
+  container.appendChild(tab2);
+  container.appendChild(tab3);
+  container.appendChild(electivesHolder);
+  addElectives(electives);
 }
 
 //finds the position of an element
@@ -548,8 +607,52 @@ function connect(off1, off2, color, thickness) { // draw a line connecting eleme
 
 //this function should be called when a class node in the tree is clicked
 //it should display information about that class and have a button to close it
-function renderSideBar(){
-  console.log("RENDERING SIDEBAR");
+function renderDescription(node){
+  console.log("RENDERING Description");
+  let container = document.getElementById('body');
+  let desc = document.createElement('div');
+  desc.classList.add('description');
+  desc.style.background = node.color;
+  let nameDiv = document.createElement('div');
+  nameDiv.innerHTML = node.name;
+  nameDiv.classList.add('nameDiv');
+  let codeDiv = document.createElement('div');
+  codeDiv.innerHTML = node.code;
+  codeDiv.classList.add('codeDiv');
+  desc.appendChild(nameDiv);
+  desc.appendChild(codeDiv);
+
+  let text = document.createElement('div');
+  text.classList.add('text');
+  //text.classList.add('codeDiv');
+  let d = 'no description available';
+  globalMajorRecord.descriptions.forEach(function(item){
+    console.log(node.name + " " + item.name);
+    if(item.name == node.name){
+      d = item.desc;
+      //break;
+    }
+  });
+  text.innerHTML = d;
+  desc.appendChild(text);
+
+  let exitButton = document.createElement('div');
+  exitButton.innerHTML = 'x';
+  exitButton.classList.add('exitButton');
+  desc.appendChild(exitButton);
+
+  exitButton.addEventListener('click', function(event){
+    container.removeChild(desc);
+    container.removeChild(shade);
+    view('viewTree', globalMajorRecord);
+  });
+
+  let shade = document.createElement('div');
+  shade.classList.add('shade');
+
+  container.appendChild(shade);
+
+  container.appendChild(desc);
 }
 
 //***********************************
