@@ -8,6 +8,10 @@ var express = require('express');
 //create app
 var app = express();
 
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 // Set up the server
 // process.env.PORT is related to deploying on heroku
 var server = app.listen(process.env.PORT || 8150, listen); //8150 -- phelpsh@cslab1.bc.edu with Eagle ID as pw
