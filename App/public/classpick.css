@@ -1,15 +1,15 @@
 .body{
-  background: #292f36;
+  background: #96845a;
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(120deg, #60437c 0%, #0e456c 100%);/*
-  background-image: linear-gradient(120deg, #8A100B 0%, #73131d 100%);*/
+  /*background-image: linear-gradient(120deg, #c5b17f 0%, #96845a 100%);*/
   min-width: 100%;
   min-height: 100%;
   padding:0;
   background-size:cover;
   background-repeat: no-repeat;
   font-family: 'Roboto Slab', serif;
+  overflow-y: scroll;
 }
 
 .container{
@@ -40,10 +40,10 @@
   width:15%;
   height:50px;
   color: white;
-  background: #1abc9c;
+  background: #8a1a1a;
   margin: 5px;
   cursor:pointer;
-  border: solid 5px #1abc9c;
+  border: solid 5px #8a1a1a;
   text-align: center;
   vertical-align: middle;
   line-height: 25px;
@@ -53,11 +53,11 @@
   width:15%;
   height:50px;
   color: white;
-  background: #11876f;
+  background: #560b0b;
   margin: 5px;
-  border: solid 5px #11876f;
-  border-top: solid 5px #11876f;
-  border-right: solid 5px #11876f;
+  border: solid 5px #560b0b;
+  border-top: solid 5px #560b0b;
+  border-right: solid 5px #560b0b;
   text-align: center;
   cursor: pointer;
   vertical-align: center;
@@ -70,7 +70,7 @@
   margin-top:20px;
   height:20px;
   color:black;
-  background: #1abc9c;
+  background: #8a1a1a;
   margin-left: 0;
   cursor:pointer;
   text-align: center;
@@ -88,7 +88,7 @@
   margin-top:20px;
   height:20px;
   color:black;
-  background: #1abc9c;
+  background: #8a1a1a;
   margin-left: 0;
   cursor:pointer;
   text-align: center;
@@ -145,6 +145,7 @@ html, body {
   flex-direction: row-reverse;
   align-items: center;
   flex-grow:.7;
+  overflow-x: auto;
 }
 
 .level{
@@ -161,7 +162,7 @@ html, body {
 .header{
   font-size: 50px;
   width: 100%;
-  background: #1abc9c;
+  background: #8a1a1a;
   text-align: center;
   color:white;
   left:0;
@@ -175,7 +176,7 @@ html, body {
   width: 100%;
   height:90px;
   max-height:150px;
-  background: #1abc9c;
+  background: #8a1a1a;
   text-align: center;
   color:white;
   left:0;
@@ -212,7 +213,7 @@ html, body {
 }
 
 .custom-dropdown select {
-  background-color: #1abc9c;
+  background-color: #8a1a1a;
   color: #fff;
   font-size: inherit;
   padding: .5em;
@@ -271,7 +272,7 @@ html, body {
 }
 
 .electiveTab{
-  background:#1abc9c;
+  background:#8a1a1a;
   color:white;
   height:30px;
   width:12%;
@@ -347,4 +348,10 @@ html, body {
   margin-top: 50px;
   font-size: 20px;
   line-height: 30px;
+}
+
+.coreTitle{
+  color:white;
+  font-size: 20px;
+  text-align: center;
 }

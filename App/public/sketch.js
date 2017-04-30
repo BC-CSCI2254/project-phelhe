@@ -1,3 +1,10 @@
+/*presentation:
+    socketio
+    drawing lines
+    the trees for each major
+    class descriptions
+*/
+
 
 
 var socket;
@@ -13,9 +20,11 @@ let divs = [];
 //holds the elective divs
 let elecDivs = [];
 
+let tab = 1; //to hold which electives are being viewed
+
 // Start a socket connection to the server
 //change this when we host it somewhere else?
-socket = io.connect('http://cslab1.bc.edu/~phelpsh:8150');//io.connect('http://localhost:3000'); //http://cslab1.bc.edu/~phelpsh/
+socket = io.connect('http://localhost:3000'); //http://cslab1.bc.edu/~phelpsh/
 //socket = io.connect('10.0.0.32:3000'); //change this to switcht the host
 
 
@@ -74,21 +83,19 @@ function view(page, data){
         view('classPick', globalMajorRecord.classes);
       });
       backButton.addEventListener('mouseover', function(event){
-        backButton.style.background = shadeColor("#1abc9c", 35);
+        backButton.style.background = shadeColor("#8a1a1a", 35);
       });
       backButton.addEventListener('mouseout', function(event){
-        backButton.style.background = '#1abc9c';
+        backButton.style.background = '#8a1a1a';
       });
       let menu = document.createElement('div');
       container.appendChild(backButton);
       generateTree(globalMajorRecord.tree);
-      console.log("HELLO");
       generateElectives(globalMajorRecord.electives3000);
       generateOffsets(divs);
       generateOffsets(elecDivs);
-      console.log(elecDivs);
       connectClasses(globalMajorRecord.tree);
-      unvisit(globalMajorRecord.tree); //have to use the tree field ... not used???
+      //unvisit(globalMajorRecord.tree); //have to use the tree field ... not used???
       break;
     default:
       console.log("default... should not see this ever");
@@ -119,11 +126,11 @@ function renderMajorPick(majors){
     sendMajor(select.value);
   });
   submit.addEventListener('mouseover', function(event){
-    submit.style.background = shadeColor("#1abc9c", 35);
+    submit.style.background = shadeColor("#8a1a1a", 35);
   });
 
   submit.addEventListener('mouseout', function(event){
-    submit.style.background = '#1abc9c';
+    submit.style.background = '#8a1a1a';
   });
   menu.appendChild(span);
   menu.appendChild(submit);
@@ -150,11 +157,11 @@ function renderFrames(classlist){
   });
 
   submit.addEventListener('mouseover', function(event){
-    submit.style.background = shadeColor("#1abc9c", 35);
+    submit.style.background = shadeColor("#8a1a1a", 35);
   });
 
   submit.addEventListener('mouseout', function(event){
-    submit.style.background = '#1abc9c';
+    submit.style.background = '#8a1a1a';
   });
 
   //back -- sends the user back to the major select page
@@ -165,11 +172,11 @@ function renderFrames(classlist){
     view('chooseMajors', majorsArray);
   });
   backButton.addEventListener('mouseover', function(event){
-    backButton.style.background = shadeColor("#1abc9c", 35);
+    backButton.style.background = shadeColor("#8a1a1a", 35);
   });
 
   backButton.addEventListener('mouseout', function(event){
-    backButton.style.background = '#1abc9c';
+    backButton.style.background = '#8a1a1a';
   });
 
   //classpanel -- creates a panel to hold all of the classes
@@ -187,23 +194,23 @@ function renderFrames(classlist){
 
     classButton.addEventListener('mouseover', function(event){
       if(!item.taken){
-        classButton.style.background = shadeColor("#1abc9c", 35);
-        classButton.style.border = 'solid 5px' + shadeColor('#1abc9c',35);
+        classButton.style.background = shadeColor("#8a1a1a", 35);
+        classButton.style.border = 'solid 5px' + shadeColor('#8a1a1a',35);
       }
       else{
-        classButton.style.background = shadeColor("#11876f", 35);
-        classButton.style.border = 'solid 5px' + shadeColor('#11876f',35);
+        classButton.style.background = shadeColor("#560b0b", 35);
+        classButton.style.border = 'solid 5px' + shadeColor('#560b0b',35);
       }
     });
 
     classButton.addEventListener('mouseout', function(event){
       if(!item.taken){
-        classButton.style.background = '#1abc9c';
-        classButton.style.border = 'solid 5px #1abc9c';
+        classButton.style.background = '#8a1a1a';
+        classButton.style.border = 'solid 5px #8a1a1a';
       }
       else{
-        classButton.style.background = '#11876f';
-        classButton.style.border = 'solid 5px #11876f';
+        classButton.style.background = '#560b0b';
+        classButton.style.border = 'solid 5px #560b0b';
       }
     });
 
@@ -261,7 +268,7 @@ function markTaken(classname, node){
 }
 
 //not used?
-function visit(tree){
+/*function visit(tree){
   let root = tree;
   var q = [];
   q.push(tree);
@@ -289,7 +296,7 @@ function unvisit(tree){
     });
   }
   globalMajorRecord.tree = root;
-}
+}*/
 
 //used to lighten on mouseover
 function shadeColor(color, percent) {
@@ -374,7 +381,7 @@ function generateTree(tree){
     node.prereqs.forEach(function(item){
       if(!visited.includes(item.name)){ //do if visitedList.contains(item.name)...
         visited.push(item.name);
-        item.visited = 1; //do visitedList.push(item.name);
+        //item.visited = 1; //do visitedList.push(item.name);
         //console.log(item.visited);
         q.unshift(item);
       }
@@ -412,7 +419,9 @@ function addElectives(electives){
         for(var i = 0; i<divs.length; i++){
           if(divs[i].name == prereq.name){
             //console.log(divs[i].name);
-            divs[i].div.style.background = shadeColor(elective.color, 50);
+            //divs[i].div.style.background = shadeColor(elective.color, 50);
+            divs[i].div.style.background = '#e83a3a';//shadeColor(elective.color, 50);
+            //div[i].div.style.color = 'white';
           }
           /*else{
             console.log(divs[i].name);
@@ -421,7 +430,9 @@ function addElectives(electives){
         }
         for(var j = 0; j<elecDivs.length; j++){
           if(elecDivs[j].name == prereq.name){
-            elecDivs[j].div.style.background = shadeColor(elective.color, 50);
+            //elecDivs[j].div.style.background = shadeColor(elective.color, 50);
+            elecDivs[j].div.style.background = '#e83a3a';
+            //elecDivs[j].div.style.color = 'white';
           }
           /*else{
             if(elecDivs[j].name!=elective.name){
@@ -437,9 +448,11 @@ function addElectives(electives){
       elective.prereqs.forEach(function(prereq){
         for(var i = 0; i<divs.length; i++){
             divs[i].div.style.background = divs[i].color;
+            //div[i].div.style.color = '#3c4047';
         }
         for(var j = 0; j<elecDivs.length; j++){
             elecDivs[j].div.style.background = elecDivs[j].color;
+            //elecDivs[j].div.style.color = '#3c4047';
         }
       });
     });
@@ -463,29 +476,30 @@ function generateElectives(electives){ //dont draw lines, just light up its prer
   let tab3 = document.createElement('div');
   tab3.innerHTML = '3000 Level Electives';
   tab3.classList.add('electiveTab');
-  tab1.style.background = '#11876f';
-  tab2.style.background = '#11876f';
-  tab3.style.backgroun = '#1abc9c';
+
+  tab1.style.background = '#560b0b';
+  tab2.style.background = '#560b0b';
+  tab3.style.background = '#8a1a1a';
 
   tab1.addEventListener('click', function(event){
     console.log("tab1");
-    tab2.style.background = '#11876f';
-    tab1.style.background = '#1abc9c';
-    tab3.style.background = '#11876f';
+    tab2.style.background = '#560b0b';
+    tab1.style.background = '#8a1a1a';
+    tab3.style.background = '#560b0b';
     addElectives(globalMajorRecord.electives1000);
   });
   tab2.addEventListener('click', function(event){
     console.log("tab2");
-    tab1.style.background = '#11876f';
-    tab2.style.background = '#1abc9c';
-    tab3.style.background = '#11876f';
+    tab1.style.background = '#560b0b';
+    tab2.style.background = '#8a1a1a';
+    tab3.style.background = '#560b0b';
     addElectives(globalMajorRecord.electives2000);
   });
   tab3.addEventListener('click', function(event){
     console.log("tab3");
-    tab1.style.background = '#11876f';
-    tab2.style.background = '#11876f'
-    tab3.style.background = '#1abc9c';
+    tab1.style.background = '#560b0b';
+    tab2.style.background = '#560b0b'
+    tab3.style.background = '#8a1a1a';
     addElectives(globalMajorRecord.electives3000);
   });
 
@@ -564,7 +578,7 @@ function connectClasses(tree){
       //}
     });
   }
-  unvisit(tree); //reset all the visited nodes -- maybe just do tree.prototype.visited = 0???
+  //unvisit(tree); //reset all the visited nodes -- maybe just do tree.prototype.visited = 0???
 }
 
 //draws a line between two offsets
@@ -644,7 +658,7 @@ function renderDescription(node){
   exitButton.addEventListener('click', function(event){
     container.removeChild(desc);
     container.removeChild(shade);
-    view('viewTree', globalMajorRecord);
+    //view('viewTree', globalMajorRecord);
   });
 
   let shade = document.createElement('div');
