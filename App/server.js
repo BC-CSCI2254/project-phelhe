@@ -314,7 +314,7 @@ function CSCIdescriptions(){
   {
     name: "Computer Architecture",
     code: "CSCI3372",
-    desc: ""
+    desc: "In this course we investigate how computer hardware works and considerations for design of a computer. Topics include instruction programming and control, computer arithmetic, processor design, pipelining, memory hierarchy, input/output, and advanced architecture topics. CSCI 3373 is a laboratory-based study of computer hardware in which students design and build digital circuits related to the topics in CSCI 3372. Topics include hardware description languages, combinational and sequential circuits, arithmetic and logic units, input/output circuits, data paths, control, pipelining, and system design."
   },
 
   {

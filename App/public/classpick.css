@@ -108,7 +108,7 @@ html, body {
 
 .node{
   width: 48%;
-  height: 52px;
+  height: 40px;
   background: #ff6b6b;
   text-align: center;
   padding-top:15px;
@@ -145,7 +145,6 @@ html, body {
   flex-direction: row-reverse;
   align-items: center;
   flex-grow:.7;
-  overflow-x: auto;
 }
 
 .level{
@@ -173,7 +172,7 @@ html, body {
 
 .electivesHolder{
   font-size: 20px;
-  width: 100%;
+  width: 99%;
   height:90px;
   max-height:150px;
   background: #8a1a1a;
@@ -187,9 +186,14 @@ html, body {
   flex-direction: row;
   padding:10px;;
   flex-wrap: wrap;
-  flex-grow: -1;
+  flex-grow:1;
   vertical-align: baseline;
   overflow-y: scroll;
+  /*changed this:*/
+  position: absolute;
+  top:87%;
+  bottom:0px;
+  overflow-x: scroll;
 }
 
 .menu{
@@ -272,7 +276,7 @@ html, body {
   color: rgba(0,0,0,.4);
 }
 
-.electiveTab{
+.electiveTab1{
   background:#8a1a1a;
   color:white;
   height:30px;
@@ -284,6 +288,46 @@ html, body {
   border-top-right-radius: 5px;
   cursor:pointer;
   margin-right:5px;
+  /*changed this:*/
+  position:absolute;
+  top:84%;
+  left:0%;
+}
+
+.electiveTab2{
+  background:#8a1a1a;
+  color:white;
+  height:30px;
+  width:12%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor:pointer;
+  margin-right:5px;
+  /*changed this:*/
+  position:absolute;
+  top:84%;
+  left:13%;
+}
+
+.electiveTab3{
+  background:#8a1a1a;
+  color:white;
+  height:30px;
+  width:12%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor:pointer;
+  margin-right:5px;
+  /*changed this:*/
+  position:absolute;
+  top:84%;
+  left:26%;
 }
 
 .description{

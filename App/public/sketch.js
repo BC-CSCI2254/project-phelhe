@@ -420,6 +420,7 @@ function generateTree(tree){
 }
 
 function addElectives(electives){
+  elecDivs = [];
   let electivesHolder = document.getElementById('electivesHolder');
   console.log(electivesHolder);
   while(electivesHolder.firstChild){ //clear the container
@@ -470,6 +471,7 @@ function addElectives(electives){
     });
 
     node.addEventListener("mouseout", function(event){
+      console.log("mouseout");
       node.style.background = elective.color;
       elective.prereqs.forEach(function(prereq){
         for(var i = 0; i<divs.length; i++){
@@ -477,12 +479,14 @@ function addElectives(electives){
             divs[i].div.style.border = 'solid 5px ' + divs[i].color;
             //div[i].div.style.color = '#3c4047';
         }
-        for(var j = 0; j<elecDivs.length; j++){
-            elecDivs[j].div.style.background = elecDivs[j].color;
-            elecDivs[j].div.style.border = 'solid 2px ' + elecDivs[j].color;
-            //elecDivs[j].div.style.color = '#3c4047';
-        }
       });
+      for(var j = 0; j<elecDivs.length; j++){
+        //console.log("hello?");
+          //console.log(elecDivs[j].name);
+          elecDivs[j].div.style.background = elecDivs[j].color;
+          elecDivs[j].div.style.border = 'solid 2px ' + elecDivs[j].color;
+          //elecDivs[j].div.style.color = '#3c4047';
+      }
     });
     electivesHolder.appendChild(node);
     elecDivs.push({name: elective.name, div:node, color:elective.color});
@@ -497,13 +501,13 @@ function generateElectives(electives){ //dont draw lines, just light up its prer
   //electivesHolder.innerHTML = "ELECTIVES GO HERE";
   let tab1 = document.createElement('div');
   tab1.innerHTML = '1000 Level Electives';
-  tab1.classList.add('electiveTab');
+  tab1.classList.add('electiveTab1');
   let tab2 = document.createElement('div');
   tab2.innerHTML = '2000 Level Electives';
-  tab2.classList.add('electiveTab');
+  tab2.classList.add('electiveTab2');
   let tab3 = document.createElement('div');
   tab3.innerHTML = '3000 Level Electives';
-  tab3.classList.add('electiveTab');
+  tab3.classList.add('electiveTab3');
 
   tab1.style.background = '#560b0b';
   tab2.style.background = '#560b0b';
