@@ -199,6 +199,11 @@ function renderFrames(classlist){
     backButton.style.background = '#8a1a1a';
   });
 
+  let text = document.createElement('div');
+  text.innerHTML = "Select the classes you have taken..."
+  text.classList.add("help");
+  container.appendChild(text);
+
   //classpanel -- creates a panel to hold all of the classes
   let classPanel = document.createElement('div');
   classPanel.classList.add("classPanel");

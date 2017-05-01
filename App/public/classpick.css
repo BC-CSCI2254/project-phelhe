@@ -400,3 +400,10 @@ html, body {
   font-size: 20px;
   text-align: center;
 }
+
+
+.help{
+  position:absolute;
+  top:20%;
+  left:40%;
+}
