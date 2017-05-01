@@ -47,11 +47,12 @@ let econClasses = [{name: "Principles of Economics", taken: 0}, {name: "Calculus
 //****************************
 
 let CSCId = new CSCIdescriptions();
+let econD = new econDescriptions();
 
 //new itp-networked-media
 let computerScienceBA = {name: "Computer Science B.A.", classes: csciClassesBA, tree:csciBACore, descriptions:CSCId};
 let computerScienceBS = {name: "Computer Science B.S.", classes: csciClassesBS, tree:csciBSCore, descriptions:CSCId};
-let Economics = {name: "Economics", classes: econClasses, tree: economicsCore};
+let Economics = {name: "Economics", classes: econClasses, tree: economicsCore, descriptions:econD};
 
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
@@ -511,147 +512,145 @@ function CSCIdescriptions(){
 }
 
 
-/*
-let ECON1131D {
-  name: "Principles of MacroEconomics",
+function econDescriptions(){
+return [{
+  name: "Principles of Macroeconomics",
   code:'ECON1132',
   desc:'Open to freshmen, sophomores and juniors. Course is open to seniors by department permission.This course is an analysis of national income and employment, economic fluctuations, monetary and fiscal policy, inflation, growth, and international aspects of macroeconomic policy. This course is an analysis of prices, output, and income distribution through the interaction of households and business firms in a modern Western economy. The appropriate role of government intervention is examined, and basic analytical tools are applied to current economic problems. Open to freshmen, sophomores and juniors. Course is open to seniors by department permission. Satisfies Core requirement for: Social Science'
-};
-
-let ECON1132D {
-  name:"Principles of MircroEconomics",
+},
+{
+  name:"Principles of Microeconomics",
   code:'ECON1132',
   desc:'This course is an analysis of prices, output, and income distribution through the interaction of households and business firms in a modern Western economy. The appropriate role of government intervention is examined, and basic analytical tools are applied to current economic problems. Open to freshmen, sophomores and juniors. Course is open to seniors by department permission. Satisfies Core requirement for: Social Science'
-};
-let MATH1100D {
+},
+{
   name:"Calculus I",
   code:'MATH1100',
-  desc:
-};
-let ECON1151D {
+  desc:"MATH 1100 is a first course in the calculus of one variable intended for biology, computer science, economics, management, and premedical students. It is open to others who are qualified and desire a more rigorous mathematics course at the core level. Topics include a brief review of polynomials, trigonometric, exponential, and logarithmic functions, followed by discussion of limits, derivatives, and applications of differential calculus to real-world problem areas. An introduction to integration concludes the course."
+},
+{
   name:"Economic Statistics",
   code:'ECON1151',
   desc:'This course is focused on probability, random variables, sampling distributions, estimation of parameters, tests of hypotheses, regression, and forecasting.'
-};
-let ECON2201D {
+},
+{
   name:"Microeconomic Theory",
   code:'ECON2201',
   desc:'This course develops a theoretical framework with which to analyze consumer and producer behavior. This analysis is then employed to investigate the determination of prices and output in various market situations, the implications for welfare, and the appropriate role for government intervention.'
-};
-let ECON2202D {
+},
+{
   name:"Macroeconomic Theory",
   code:'ECON2202',
   desc:'This course is intended to equip the student for the analysis of the determination of employment and national income. Emphasis will be placed on the Keynesian theory of employment, interest, and money and on post-Keynesian macroeconomic models.'
-};
-let ECON2228D {
+},
+{
   name:"Econometrics",
   code:'ECON2228',
   desc:'This course focuses on testing the predictions of economic theory. Topics covered include simple and multiple regression, multicollinearity, heteroskedasticity, serial correlation, specification errors, errors in variables, and an introduction to simultaneous equation estimation.'
-};
-let ECON3305D {
+},
+{
   name:"Market Design",
   code:'ECON3305',
   desc:'This is an introductory-level course on market design. It aims to provide students with fundamental concepts of matching and allocation problems without money as well as auctions. The focus of the course is both introducing students to the market design theory as well as exploring real-life applications such on-campus housing, school choice, kidney exchange, search engine auctions, and spectrum auctions. Some knowledge of statistics and calculus is required for the theoretical part. Students will be required to write a final paper and do an in-class presentation.'
-};
-let ECON3308D {
+},
+{
   name:"Game Theory in Economics",
   code:'ECON3308',
   desc:'This course is an introduction to game theory. Game theory consists of a coherent set of concepts and analytical tools to examine interactive or strategic situations between people, that is, situations where the well being of one actor depends not only what s/he does but also on what others do. Hence in deciding how best to act, each person needs to consider how others are likely to act as well. Game theory has become a widely used tool of analysis in a wide range of disciplines, including economics, business, political science, law and international relations.'
-};
-let ECON3312D {
-  name:"Ecolutionary Economics",
+},
+{
+  name:"Evolutionary Economics",
   code:'ECON3312',
   desc:'This course uses evolutionary biology to better understand the psychology of preferences, a central concept in economics. Why are people risk averse? Impatient? What explains novelty seeking, habits, addictions? What makes parents provide for children? We will use evolutionary thinking to explore these and a host of other diverse topics: violence, adolescent risk taking, sexual behavior, mating preferences, marriage and divorce, rearing and investing in children, extended families, trade and specialization, cooperation and conflict, cults and gangs, religion, and interactions between genetic and cultural forces. This course has an intensive research and writing requirement and enrollment is limited. You should be comfortable using stata. Prerequisites: Micro theory and econometrics.'
-};
-let ECON3315D {
+},
+{
   name:"Economics of Immigration",
   code:'ECON3315',
   desc:'This course is an upper level elective. A basic understanding of statistics and econometrics will be helpful, but is not required. This course will examine the economic decisions of migrants and their impacts on both destination and origin economies. It will emphasize the effect of immigration on wage distribution, labor market efficiency, and innovation, and will consider current public policy issues such as border control, visa allocation, and refugee admission.'
-};
-let ECON3317D {
+},
+{
   name:"Economics of Inequality",
   code:'ECON3317',
-  desc:'
-The course will provide both a theoretical and empirical analysis of economic inequality. This will include analysis and discussion of recent trends in inequality and an examination of the economic causes and consequences of inequality. Specific attention will be paid to the difference between inequality of economic outcomes (e.g., employment status, earnings, and occupation) and inequality of economic opportunity. The course will also touch on economic policy, including discussions of programs designed to combat inequality of outcomes, like welfare and food stamps, as well as those designed to combat inequality of opportunity, like Head Start.'
-};
-let ECON3327D {
+  desc:"The course will provide both a theoretical and empirical analysis of economic inequality. This will include analysis and discussion of recent trends in inequality and an examination of the economic causes and consequences of inequality. Specific attention will be paid to the difference between inequality of economic outcomes (e.g., employment status, earnings, and occupation) and inequality of economic opportunity. The course will also touch on economic policy, including discussions of programs designed to combat inequality of outcomes, like welfare and food stamps, as well as those designed to combat inequality of opportunity, like Head Start."
+},
+{
   name:"Financial Econometrics",
   code:'ECON3327',
   desc:'This course extends ECON2228 to present panel data models, selected topics in time series analysis, and limited dependent variable models. Methods used in financial econometrics, such as rolling CAPM estimation, volatility estimation and event studies will be stressed. Examples and datasets are drawn from financial economics.'
-};
-let ECON3331D {
+},
+{
   name:"Distributive Justice",
   code:'ECON3331',
   desc:'The course will analyze modern analysis of justice and fairness. We will discuss bargaining situations and social choice questions. Part of the course will be devoted to the recent experimental literature regarding fairness. Limited enrollment (12). Significant writing/research component. This course requires a strong conceptual understanding of Micro Theory.'
-};
-let ECON3340D {
+},
+{
   name:"Labor Economics",
   code:'ECON3340',
   desc:'This course will introduce students to the methodology of labor economics from both institutional and neoclassical perspectives. The principal emphasis will be on neoclassical theory and empirical work dealing with the supply and demand for labor; the operation of the labor market; the determination of wages; and the impact of trade unions and collective bargaining. Special emphasis will be placed on applications of theory and empirical findings to policy questions.'
-};
-let ECON3354D {
+},
+{
   name:"Advertising/Media Mkts: Advanced Research Methods",
   code:'ECON3354',
   desc:'This course develops advanced research methods to study the advertising and media markets. The goal of the course is to provide hands-on experience with advanced research methods, including the ability to analyze and critique previous research and to identify important research questions. The course is designed primarily for junior economics majors who are interested in writing a senior thesis, or for junior and senior economics majors anticipating quantitative work in economics or marketing after graduation. Methods that are taught include theoretical tools from industrial organization, such as game theoretic models of imperfect competition, pricing, and entry, as well as statistical and empirical methods of analysis using data on advertising and media programming choices. Questions addressed in the course include the following: What is the impact of advertising on product markets? How do advertisers compete for air time, both across and within industries?'
-};
-let ECON3356D {
+},
+{
   name:"Industrial Organization for Business Decisions",
   code:'ECON3356',
   desc:'We study the behavior of firms and the structure of industries, applying game theory to understand the strategic interaction of firms when the assumptions of perfect competition break down. The course combines theoretical micro-economic analyses with studies of actual firm behavior in individual industries. Topics include pricing, game theory, collusion, outsourcing, auctions, and adverse selection. The course will incorporate insights from developments in behavioral economics and consider regulation for consumer protection.'
-};
-let ECON3361D {
+},
+{
   name:"Monetary Theory and Policy",
   code:'ECON3361',
   desc:'An analysis of the operation and behavior of financial markets and financial institutions. Emphasis is placed on financial intermediaries, including commercial banks and the central bank. The money supply process and alternative theories of the demand for money are considered, as well as their implications for monetary policy and macroeconomic performance.'
-};
-let ECON3363D {
+},
+{
   name: "Micro Public Policy Issues",
   code:'ECON3363',
   desc:"This is a course in the microeconomics of the public sector. We will discuss the rationale for the government's role in a market economy, major expenditure programs, and the theory and structure of the tax system. The focus will be on the federal (as opposed to state and local) government's expenditure and tax programs, with special attention given to topics of current concern."
-};
-let ECON3365D {
+},
+{
   name:"Public Finance",
   code:'ECON3365',
   desc:"This is a course in the microeconomics of the public sector. We will discuss the rationale for the government's role in a market economy, major expenditure programs, and the theory and structure of the tax system. The focus will be on the federal (as opposed to state and local) government's expenditure and tax programs, with special attention given to topics of current concern."
-};
-let ECON3367D {
+},
+{
   name:"American Economic Policy",
   code:'ECON3367',
   desc:"This course allows students the opportunity to apply macroeconomic and microeconomic techniques and models to issues of current importance. Although the choice of topics is based on the interests of the students present, typically the course covers the economic effects of immigration, changes in the minimum wage, negative interest rate policies, fiscal challenges of the federal government, Social Security reform, income inequality, and trade."
-};
-let ECON3371D {
+},
+{
   name:"International Trade",
   code:'ECON3371',
   desc:"This course is an analysis of the foundations of trade and the principle of comparative advantage leading to a sophisticated study of protectionism. Current U.S. protectionist issues will be illuminated, as well as economic warfare, control of international factor movements, and interaction of trade and economic development."
-};
-let ECON3372D {
+},
+{
   name:"International Finance",
   code:'ECON3372',
   desc:"International financial markets, international trade and balance of payments issues will be studied by using analytical models of the open economy. Topics of particular interests are exchange rate determination, capital flows, trade flows, and other international linkages between economies. The course will apply the analytical tools of international economics to address macroeconomic aspects of current policy issues such as the global impact of the financial crisis, exchange rate policy, sovereign debt crises, and persistent trade deficits and international indebtedness."
-};
-let ECON3373D {
+},
+{
   name:"Impact Evaluation in Developing Countries",
   code:'ECON3373',
   desc:"This course reviews advanced econometric techniques and research designs used to estimate the causal effect of programs or policies implemented in developing countries. Fixed effects, difference-in-difference, instrumental variable, and propensity score methods are discussed as are regression discontinuity, natural experiment, and randomized experiment designs. The economic rationale for such programs is also addressed. Topic areas include health, education, service delivery, insurance, and micro-finance."
-};
-let ECON3374D {
+},
+{
   name:"Development Economics and Policy",
   code:'ECON3374',
   desc:"This course examines development economics and development policy. The purpose is to understand the lives of the poor and the economies of poor countries in order to decipher what?if anything?can be done to improve their lives. We will consider what might be holding the poor back including population growth, lack of education, poor health, corruption, and institutional impediments. We will examine different empirical methods to evaluate the effects of a policy or program, and what we do, and do not, know about poverty. Students will write a paper which considers the research and economic reasoning for a particular program to help the poor by a government giving foreign aid, a developing country government, or an NGO. This course is appropriate for economics majors as well as for majors in international studies with the appropriate prerequisites. Satisfies Core requirement for: Cultural Diversity"
-};
-let ECON3379D {
+},
+{
   name:"Financial Economics",
   code:'ECON3379',
   desc:"This undergraduate elective focuses on financial economics, with specific emphasis on asset pricing and the valuation of risky cash flows. After developing and studying the details of consumer decision-making under uncertainty, it uses that general framework as a basis for understanding both equilibrium and no-arbitrage theories of securities pricing, including the capital asset pricing model (CAPM), the consumption capital asset pricing model (CCAPM), Arrow-Debreu theories, martingale pricing methods, and the arbitrage pricing theory (APT)."
-};
-let ECON3382D {
+},
+{
   name:"Introduction to Computational Investing",
   code:'ECON3382',
   desc:"In this course, students develop skills automate an investment strategy. The first third of the course covers programming skills (Python), market structure, and portfolio evaluation. The second third covers optimization and commonly used strategies. In the final third, we cross-evaluate student projects and discuss theory behind applications. Students work on a group project after the first third of the course. By the end of the course, successful students are able to write and evaluate fully functional programs on an online trading platform. Please show up in class if you are interested but cannot register or do not meet the requirements. Traditionally, all interested students have been able to eventually register. This is not a course that promotes quantitative investing. It is an immersion to acquire the universally useful skills required to automate investments. The lab session is mandatory. Juniors encouraged to enroll. Course offered in the Fall only."
-};
-let ECON3384D {
+},
+{
   name:"Prin & Theory of Medical & Health ",
   code:'ECON3384',
   desc:'The course is designed to teach students how to use basic principles and theories of microeconomics and statistics when thinking about medical and health care issues. In the course, we will use these concepts to understand the demand for health care, the supply of health care, the health insurance market, and the role of the government in health policy. We will focus on the U.S. health care industry. The market structure and the conduct and performance of the sub-sectors that compose this industry will be covered. Private insurance, pharmaceuticals, physician services, hospital service, and medical markets will be evaluated. Alternative health care systems will also be studied.'
-};
-*/
+}];
+}

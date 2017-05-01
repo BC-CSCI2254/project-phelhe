@@ -446,7 +446,7 @@ function addElectives(electives){
             //console.log(divs[i].name);
             //divs[i].div.style.background = shadeColor(elective.color, 50);
             //divs[i].div.style.background = '#e83a3a';//shadeColor(elective.color, 50);
-            divs[i].div.style.border = 'solid 5px black'
+            divs[i].div.style.border = 'solid 5px black';
             //div[i].div.style.color = 'white';
           }
           /*else{
@@ -669,7 +669,7 @@ function renderDescription(node){
   //text.classList.add('codeDiv');
   let d = 'no description available';
   globalMajorRecord.descriptions.forEach(function(item){
-    console.log(node.name + " " + item.name);
+    //console.log(node.name + " " + item.name);
     if(item.name == node.name){
       d = item.desc;
       //break;
