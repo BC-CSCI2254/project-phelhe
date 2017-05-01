@@ -1,5 +1,5 @@
 .body{
-  background: #96845a;
+  background: #e8e3d4;
   display: flex;
   flex-direction: column;
   /*background-image: linear-gradient(120deg, #c5b17f 0%, #96845a 100%);*/
@@ -107,8 +107,8 @@ html, body {
 
 
 .node{
-  width: 50%;
-  height: 50px;
+  width: 48%;
+  height: 52px;
   background: #ff6b6b;
   text-align: center;
   padding-top:15px;
@@ -189,6 +189,7 @@ html, body {
   flex-wrap: wrap;
   flex-grow: -1;
   vertical-align: baseline;
+  overflow-y: scroll;
 }
 
 .menu{

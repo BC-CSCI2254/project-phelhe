@@ -28,10 +28,8 @@ app.use(express.static('public'));
 // WebSockets work with the HTTP server
 var io = require('socket.io')(server);
 
-//list of colors
-let colors =["Aqua","Aquamarine","Blue","BlueViolet","Chartreuse","CornflowerBlue","Crimson","Cyan","DeepPink","DeepSkyBlue","DodgerBlue","FireBrick","ForestGreen","Fuchsia","Gold","GoldenRod","Green","GreenYellow","HotPink","Indigo","Khaki","LawnGreen","LightBlue","LightCoral","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","Lime","LimeGreen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","Navy","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGreen","PaleTurquoise","PaleVioletRed","Pink","Plum","PowderBlue","Purple","Red","RoyalBlue","Salmon","SeaGreen","SkyBlue","SlateBlue","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Yellow","YellowGreen"];
 
-let colors2 = ["#7AD334", "#88aaff", "#F0A000", "#DAD320", "#dd9999", "#ffaa88", "#ddaacc", "#62f79b", "#304bff"];
+let colors2 = ["#7AD334", "#88aaff", "#F0A000", "#DAD320", "#dd9999", "#ffaa88", "#ddaacc", "#62f79b", "#ff5151", "#a975ff"];
 
 //list of majors
 let majors = ["Computer Science B.A.", "Computer Science B.S.", "Economics"];
@@ -43,8 +41,8 @@ let economicsCore = new econCore();
 //****************************
 
 //major classlists
-let csciClassesBS = [{name: "Calculus I", taken: 0}, {name: "Computer Science 1", taken: 0},{name: "Computer Science 2", taken: 0},{name: "Technology and Culture", taken:0},{name: "Calculus II", taken: 0}, {name: "Computer Organization", taken: 0}, {name: "Computer Systems", taken: 0},{name: "Logic and Computation", taken: 0},{name: "Randomness and Computation", taken: 0}, {name: "Linear Algebra", taken:0}, {name: "Computer Architecture", taken:0},{name: "Multivariable Calculus", taken:0},{name: "Algorithms", taken: 0}];
-let csciClassesBA = [{name: "Calculus I", taken: 0}, {name: "Computer Science 1", taken: 0},{name: "Computer Science 2", taken: 0},{name: "Calculus II", taken: 0}, {name: "Computer Organization", taken: 0}, {name: "Computer Systems", taken: 0},{name: "Logic and Computation", taken: 0},{name: "Randomness and Computation", taken: 0}, {name: "Algorithms", taken: 0}];
+let csciClassesBS = [{name: "Calculus I", taken: 0}, {name: "Computer Science I", taken: 0},{name: "Computer Science II", taken: 0},{name: "Technology and Culture", taken:0},{name: "Calculus II", taken: 0}, {name: "Computer Organization", taken: 0}, {name: "Computer Systems", taken: 0},{name: "Logic and Computation", taken: 0},{name: "Randomness and Computation", taken: 0}, {name: "Linear Algebra", taken:0}, {name: "Computer Architecture", taken:0},{name: "Multivariable Calculus", taken:0},{name: "Algorithms", taken: 0}];
+let csciClassesBA = [{name: "Calculus I", taken: 0}, {name: "Computer Science I", taken: 0},{name: "Computer Science II", taken: 0},{name: "Calculus II", taken: 0}, {name: "Computer Organization", taken: 0}, {name: "Computer Systems", taken: 0},{name: "Logic and Computation", taken: 0},{name: "Randomness and Computation", taken: 0}, {name: "Algorithms", taken: 0}];
 let econClasses = [{name: "Principles of Economics", taken: 0}, {name: "Calculus I", taken: 0},{name: "Economic Statistics", taken: 0},{name: "Econometrics", taken: 0}, {name: "Macroeconomic Theory", taken: 0}, {name: "Microeconomic Theory", taken:0}];
 //****************************
 
@@ -491,6 +489,18 @@ function CSCIdescriptions(){
     name: "Cryptography",
     code: "CSCI3381",
     desc: "When you log onto a secure web site, for example to pay a bill from your bank account, you need to be assured of certain things: Is your communication private? An eavesdropper should not be able to determine what information you and the bank are exchanging. Does the website you are communicating with really belong to the bank? A third party should not be able to successfully impersonate the bank. Are you you? A third party should not be able to impersonate you and make payments from your account. Are the messages you and the bank receive from each other the same ones that were sent? No one should be able to alter the messages in transit without this being detected. Behind the scenes, an extraordinary series of computations takes place to ensure that these security requirements are met. This course some sophisticated ideas from both mathematics and computer science that make it all work. We will begin the course with a look at some classical cryptographic systems that were in use before the advent of computers, then study modern block ciphers, both the general principles behind their construction and use, and some details about widely-used systems: the Data Encryption Standard (DES) and Advanced Encryption Standard (AES). These are symmetric systems in which the parties share some secret information (a key) used for both encryption and decryption. Cryptography was profoundly changed by the invention, in the late 1970's, of asymmetric, or public-key cryptosystems, in which the two parties do not need to share a secret in order to communicate securely. We will study public-key cryptosystems like RSA, cryptographic hash functions, schemes for digital signatures, and zero-knowledge identification schemes. We'll finish the course looking at some real-world cryptographic protocols (for example, SSL), more speculative protocols (electronic elections or digital cash), and some different ideas for the construction of cryptosystems (quantum cryptography)."
+  },
+
+  {
+    name: "Mobile Application Development",
+    code: "CSCI3344",
+    desc: "This is a project-oriented course focusing on the development of applications for smart phones and tablets. The course is currently taught using Google’s Android platform. The course will focus on software and user interface design, emphasizing best practices. The course examines issues arising from the unique characteristics of mobile input devices including touch and gesture input, access to a microphone, camera, and orientation and location awareness. We will also explore engineering aspects of targeting small memory platforms and small screens. Students will be required to design and develop substantial projects by the end of the course."
+  },
+
+  {
+    name: "Principles of Multimedia Systems",
+    code: "CSCI3335",
+    desc: "This course introduces principles and current technologies of multimedia systems. Topics include multimedia systems design, multimedia hardware and software, issues in effectively representing, processing, and transmitting multimedia data including text, graphics, sound and music, image, and video. Image, video, and audio standards such as JPEG, MPEG, H.26x, Dolby Digital, and AAC will be reviewed. Applications such as video conferencing, video streaming, multimedia data indexing, and retrieval will also be introduced."
   },
 
   {

@@ -1,9 +1,33 @@
 /*presentation:
+  idea:
+    way to visualze prerequisites
+    help plan out classes
+
+  tools:
+    express
     socketio
-    drawing lines
-    the trees for each major
-    class descriptions
+
+  issues:
+    socket.io
+      how to have client-server interaction and when
+      decided to make the server send all major information as soon as the user selects their major
+      we didn't want the server to send every tree for every major so we decided to do that
+    descriptions
+      had to enter them all manually
+    displaying the trees
+      where to put electives and how to display their prerequisites
+      how to make it modular - we didn't make a funciton to generate a tree for each major
+      connecting the divs with lines
+      drawing lines - we found code on stack exchange that draws a line between two divs by creating a new div
+        we altered this code to account for prerequisites in the same column
+
+  future work:
+    add more majors
+    save your courses or schedule under your eagle ID
 */
+
+//add borders
+//add econ electives
 
 
 
@@ -12,15 +36,11 @@ var socket;
 //record to hold information about the major when the server sends it
 let globalMajorRecord = {};
 
-//holds the users taken classes... not used????
-let finalClassesList = [];
-
 //holds a list of divs so that the connectClasses function can use their offsets to connect them
 let divs = [];
 //holds the elective divs
 let elecDivs = [];
 
-let tab = 1; //to hold which electives are being viewed
 
 // Start a socket connection to the server
 //change this when we host it somewhere else?
@@ -351,11 +371,13 @@ function generateTree(tree){
 
       item.addEventListener("mouseover", function(event){
         item.style.background = shadeColor(node.color, 50);
+        item.style.border = 'solid 5px ' + shadeColor(node.color, 50);
         //item.style.border = "solid 4px " + shadeColor(node.color, -100);
       });
 
       item.addEventListener("mouseout", function(event){
         item.style.background = node.color;
+        item.style.border = 'solid 5px' + node.color;
         //item.style.border = "solid 4px " + node.color;
         //console.log("back");
       });
@@ -363,6 +385,7 @@ function generateTree(tree){
       //item.style.background = node.color;
       item.style.background = node.color;
       item.style.color = '#3c4047';
+      item.style.border = 'solid 5px ' + node.color;
       //item.style.border = 'solid 4px ' + node.color;
       if(node.level == 1000){level1.appendChild(item);}
       else if(node.level == 2000){level2.appendChild(item);}
@@ -407,6 +430,7 @@ function addElectives(electives){
     node.classList.add('electiveNode');
     node.innerHTML = elective.name;
     node.style.background = elective.color;
+    node.style.border = 'solid 2px ' + elective.color;
 
     node.addEventListener('click', function(event){
       renderDescription(elective);
@@ -415,12 +439,14 @@ function addElectives(electives){
     node.addEventListener("mouseover", function(event){
       //console.log(divs);
       node.style.background = shadeColor(elective.color, 50);
+      node.style.border = 'solid 2px ' + shadeColor(elective.color, 50);
       elective.prereqs.forEach(function(prereq){
         for(var i = 0; i<divs.length; i++){
           if(divs[i].name == prereq.name){
             //console.log(divs[i].name);
             //divs[i].div.style.background = shadeColor(elective.color, 50);
-            divs[i].div.style.background = '#e83a3a';//shadeColor(elective.color, 50);
+            //divs[i].div.style.background = '#e83a3a';//shadeColor(elective.color, 50);
+            divs[i].div.style.border = 'solid 5px black'
             //div[i].div.style.color = 'white';
           }
           /*else{
@@ -431,7 +457,7 @@ function addElectives(electives){
         for(var j = 0; j<elecDivs.length; j++){
           if(elecDivs[j].name == prereq.name){
             //elecDivs[j].div.style.background = shadeColor(elective.color, 50);
-            elecDivs[j].div.style.background = '#e83a3a';
+            elecDivs[j].div.style.border ='solid 2px black';
             //elecDivs[j].div.style.color = 'white';
           }
           /*else{
@@ -448,10 +474,12 @@ function addElectives(electives){
       elective.prereqs.forEach(function(prereq){
         for(var i = 0; i<divs.length; i++){
             divs[i].div.style.background = divs[i].color;
+            divs[i].div.style.border = 'solid 5px ' + divs[i].color;
             //div[i].div.style.color = '#3c4047';
         }
         for(var j = 0; j<elecDivs.length; j++){
             elecDivs[j].div.style.background = elecDivs[j].color;
+            elecDivs[j].div.style.border = 'solid 2px ' + elecDivs[j].color;
             //elecDivs[j].div.style.color = '#3c4047';
         }
       });
