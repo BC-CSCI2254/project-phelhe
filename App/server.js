@@ -43,7 +43,7 @@ let economicsCore = new econCore();
 //major classlists
 let csciClassesBS = [{name: "Calculus I", taken: 0}, {name: "Computer Science I", taken: 0},{name: "Computer Science II", taken: 0},{name: "Technology and Culture", taken:0},{name: "Calculus II", taken: 0}, {name: "Computer Organization", taken: 0}, {name: "Computer Systems", taken: 0},{name: "Logic and Computation", taken: 0},{name: "Randomness and Computation", taken: 0}, {name: "Linear Algebra", taken:0}, {name: "Computer Architecture", taken:0},{name: "Multivariable Calculus", taken:0},{name: "Algorithms", taken: 0}];
 let csciClassesBA = [{name: "Calculus I", taken: 0}, {name: "Computer Science I", taken: 0},{name: "Computer Science II", taken: 0},{name: "Calculus II", taken: 0}, {name: "Computer Organization", taken: 0}, {name: "Computer Systems", taken: 0},{name: "Logic and Computation", taken: 0},{name: "Randomness and Computation", taken: 0}, {name: "Algorithms", taken: 0}];
-let econClasses = [{name: "Principles of Economics", taken: 0}, {name: "Calculus I", taken: 0},{name: "Economic Statistics", taken: 0},{name: "Econometrics", taken: 0}, {name: "Macroeconomic Theory", taken: 0}, {name: "Microeconomic Theory", taken:0}];
+let econClasses = [{name: "Principles of Microeconomics", taken: 0}, {name: "Principles of Macroeconomics", taken: 0}, {name: "Calculus I", taken: 0},{name: "Economic Statistics", taken: 0},{name: "Econometrics", taken: 0}, {name: "Macroeconomic Theory", taken: 0}, {name: "Microeconomic Theory", taken:0}];
 //****************************
 
 let CSCId = new CSCIdescriptions();
