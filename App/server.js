@@ -13,7 +13,7 @@ app.get('/', function(req, res){
 });
 
 // Set up the server
-var server = app.listen(3000, listen); //8150 -- phelpsh@cslab1.bc.edu with Eagle ID as pw
+var server = app.listen(8150, listen); //8150 -- phelpsh@cslab1.bc.edu with Eagle ID as pw
 
 function listen() {
   var host = server.address().address;
