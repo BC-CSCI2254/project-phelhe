@@ -13,7 +13,7 @@ app.get('/', function(req, res){
 });
 
 // Set up the server
-var server = app.listen(8150, listen); //8150 -- phelpsh@cslab1.bc.edu with Eagle ID as pw
+var server = app.listen(3000, listen); //8150 -- phelpsh@cslab1.bc.edu with Eagle ID as pw
 
 function listen() {
   var host = server.address().address;
@@ -139,7 +139,18 @@ function econCore(){
   this.core = new classNode("Core", "ECON complete", [this.ECON2201, this.ECON2202, this.ECON2228], 3000);
   //electives
   this.electives1000 = new classNode("Electives", "Econ Electives 1000", []);
-  this.electives2000 = new classNode("Electives", "Econ Electives 2000", []);
+
+  this.ECON2206 = new classNode("Real Estate and Urban Action", "ECON2206", []);
+  this.ECON2207 = new classNode("The Global Economy", "ECON2207", [this.ECON1131, this.ECON1132]);
+  this.ECON2209 = new classNode("Sports Economics", "ECON2209", [this.ECON1131, this.ECON1151]);
+  this.ECON2212 = new classNode("Geographic Info Sys for Planning, Decision Making", "ECON2212", []);
+  this.ECON2228 = new classNode("Econometric Methods", "ECON2228", [this.ECON1151, this.MATH1100]);
+  this.ECON2242 = new classNode("Public Policy in an Aging Society", "ECON2242", [this.ECON1131]);
+  this.ECON2230 = new classNode("Economics of Health Care and Social Security", "ECON2230", [this.ECON1131, this.ECON1132]);
+  this.ECON2261 = new classNode("Money, Banking, and Financial Markets", "ECON2261", [this.ECON1131, this.ECON1132]);
+  this.ECON2277 = new classNode("Environmental Economics and Policy", "ECON2277", [this.ECON1131, this.ECON1132]);
+  this.electives2000 = new classNode("Electives", "Econ Electives 2000", [this.ECON2206, this.ECON2207, this.ECON2209, this.ECON2212, this.ECON2228, this.ECON2242,this.ECON2230,this.ECON2261,this.ECON2277]);
+
   this.ECON3305 = new classNode("Market Design", "ECON3305", [this.ECON2201, this.MATH1100]);
   this.ECON3308 = new classNode("Game Theory in Economics", "ECON3308", [this.ECON2201]);
   this.ECON3312 = new classNode("Evolutionary Economics", "ECON3312", [this.ECON2201, this.ECON2228]);
@@ -652,5 +663,52 @@ return [{
   name:"Prin & Theory of Medical & Health ",
   code:'ECON3384',
   desc:'The course is designed to teach students how to use basic principles and theories of microeconomics and statistics when thinking about medical and health care issues. In the course, we will use these concepts to understand the demand for health care, the supply of health care, the health insurance market, and the role of the government in health policy. We will focus on the U.S. health care industry. The market structure and the conduct and performance of the sub-sectors that compose this industry will be covered. Private insurance, pharmaceuticals, physician services, hospital service, and medical markets will be evaluated. Alternative health care systems will also be studied.'
-}];
+},
+{
+  name: "Real Estate and Urban Action",
+  code: "ECON2206",
+  desc: "Real Estate and Urban Action is a class in which students explore the interdisciplinary fields that are engaged in neighborhood revitalization. The course uses the transformation of the failed Columbia Point housing project (Dorchester, MA) into Harbor Point, a successful mixed income neighborhood, as a core teaching case study, highlighting how successful redevelopment addresses the social and economic needs of community residents. Classes include guest lectures from developers, public planning officials, and supportive services experts on the social, cultural, and political factors critical to transforming distressed neighborhoods into safe and economically viable neighborhoods. It is a practical course, in which students gain experience through field trips and interactions with real estate and supportive services professionals, culminating in a team neighborhood transformation proposal."
+},
+{
+  name: "The Global Economy",
+  code: "ECON2207",
+  desc:"This course aims to deepen your understanding of real world economic issues, while providing you with a stronger analytical base. We will focus on international trade theory and policy, and issues in international finance."
+},
+{
+  name: "Sports Economics",
+  code: "ECON2209",
+  desc: "This course will develop fundamental economic concepts in the context of the sports industry. Students will apply economic theory to various aspects of both collegiate and professional sports. Topics include (but are not limited to) wage discrimination in sports, alumni giving and collegiate athletics, academics and collegiate athletics, sports rights and broadcasting, sports and gambling, salary caps, revenue sharing, insurance contracts, expansion, and stadium/arena financing."
+},
+{
+  name: "Geographic Info Sys for Planning, Descision Making",
+  code: "ECON2212",
+  desc: "Large quantities of information are available to describe our social and physical environment with high detail, but making sense of this data requires specialized skill sets. Geographic Information Systems (GIS) is a general approach to analysis and is a powerful set of tools for understanding complex problems or for making a compelling argument about issues grounded in the physical or social environment. It is widely used in the public and private sectors. This course will introduce students to the use of GIS and representation as a means of looking at and representing spatial data. Students will learn how to perform the three broad steps of spatial analysis: 1) collecting and organizing data, 2) analyzing this data for appropriate patterns, and 3) using software to represent data on maps to support decision making."
+},
+{
+  name: "Econometric Methods",
+  code: "ECON2228",
+  desc: "This course focuses on testing the predictions of economic theory. Topics covered include simple and multiple regression, multicollinearity, heteroskedasticity, serial correlation, specification errors, errors in variables, and an introduction to simultaneous equation estimation."
+},
+{
+  name: "Public Policy in an Aging Society",
+  code: "ECON2242",
+  desc: "We live in a rapidly aging nation. In two decades, the age distribution of the U.S. will look like that of Florida today. We will analyze the underlying demographic trends, the economic status of the aged, the fiscal challenge of an aging society, public policies (especially social insurance) designed to assist older Americans, the impact of public policy on individual behavior, and proposals for reform."
+},
+{
+  name: "Economics of Health Care and Social Security",
+  code: "ECON2230",
+  desc: "This course provides the core theories and concepts needed to understand health care issues in the developed world. It describes how the markets for health and health services are different from other goods, with a particular emphasis on the role of government and market failure. In addition it discusses the theoretical and empirical aspects of key health economics issues, including the demand for health and health services, supply side concerns, health insurance, and other possible related topics. The course encourages students examine the role of the market for the provision of health and health services and how public policy can influence these markets."
+},
+{
+  name: "Money, Banking, and Financial Markets",
+  code: "ECON2261",
+  desc: "This course deals with topics such as significance and functions of money in the economy, behavior of interest rates, banking and management of financial institutions, central banking and the conduct of monetary policy, the Federal Reserve System, financial derivatives, money market, foreign exchange market, and the international financial system."
+},
+{
+  name: "Environmental Economics and Policy",
+  code: "ECON2277",
+  desc: "This course provides an introduction to the economics of environmental policy. We begin by examining market failures from externalities and public goods. We then discuss public policy options to correct these failures, and develop tools to assess the costs and benefits of each approach. With this framework in place, the remainder of the course is spent evaluating past efforts to conserve land and improve air and water quality, before concluding with an extensive discussion about global climate change policy."
+}
+
+];
 }
