@@ -1,36 +1,3 @@
-/*presentation:
-  idea:
-    way to visualze prerequisites
-    help plan out classes
-
-  tools:
-    express
-    socketio
-
-  issues:
-    socket.io
-      how to have client-server interaction and when
-      decided to make the server send all major information as soon as the user selects their major
-      we didn't want the server to send every tree for every major so we decided to do that
-    descriptions
-      had to enter them all manually
-    displaying the trees
-      where to put electives and how to display their prerequisites
-      how to make it modular - we didn't make a funciton to generate a tree for each major
-      connecting the divs with lines
-      drawing lines - we found code on stack exchange that draws a line between two divs by creating a new div
-        we altered this code to account for prerequisites in the same column
-
-  future work:
-    add more majors
-    save your courses or schedule under your eagle ID
-*/
-
-//add borders
-//add econ electives
-
-
-
 var socket;
 
 //record to hold information about the major when the server sends it
@@ -44,7 +11,7 @@ let elecDivs = [];
 
 // Start a socket connection to the server
 //change this when we host it somewhere else?
-socket = io.connect('http://cslab1.bc.edu:8150'); //http://cslab1.bc.edu/~phelpsh/
+socket = io.connect('http://localhost:3000');//io.connect('http://cslab1.bc.edu:8150'); //http://cslab1.bc.edu/~phelpsh/
 //socket = io.connect('10.0.0.32:3000'); //change this to switcht the host
 
 

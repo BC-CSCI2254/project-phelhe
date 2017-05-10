@@ -1,8 +1,3 @@
-// Based off of Shawn Van Every's Live Web
-// http://itp.nyu.edu/~sve204/liveweb_fall2013/week3.html
-
-//get descriptions
-
 //use express
 var express = require('express');
 //create app
@@ -13,7 +8,7 @@ app.get('/', function(req, res){
 });
 
 // Set up the server
-var server = app.listen(8150, listen); //8150 -- phelpsh@cslab1.bc.edu with Eagle ID as pw
+var server = app.listen(3000, listen); //8150 -- phelpsh@cslab1.bc.edu with Eagle ID as pw
 
 function listen() {
   var host = server.address().address;
@@ -25,7 +20,6 @@ app.use(express.static('public'));
 
 
 // WebSocket Portion
-// WebSockets work with the HTTP server
 var io = require('socket.io')(server);
 
 
