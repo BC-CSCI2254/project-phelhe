@@ -7,7 +7,7 @@ Finally, a tree is displayed showing the core classes that you have not taken ye
 
 ## Tools
 
-We used node, express, and socket.
+We used node, express, and socket.IO.
 
 ## Setting up the server
 
